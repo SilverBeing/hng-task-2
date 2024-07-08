@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 export default function PaymentComplete({ hide }) {
   return (
-    <div className=" p-5 lg:p-10 max-w-[201px] lg:max-w-[469px]">
+    <div className="  max-w-[201px] lg:max-w-[469px]">
       <Image src={complete} alt="" className=" mx-auto mb-[34px]" />
       <p className=" text-darkBlue  leading-normal text-center text-base lg:text-[36px]">
         Your order has been received

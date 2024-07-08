@@ -58,7 +58,7 @@ export default function Footer() {
                 className="w-full rounded-tl-[12px] rounded-bl-[12px] placeholder:text-sm placeholder:text-[rgba(110,116,133,0.80] h-full px-3  min-w-[30px]"
               />
             </div>
-            <button className=" px-[10px]  w-[74px] h-full grid place-items-center text-white bg-primary  rounded-tr-[12px] rounded-br-[12px] text-sm font-semibold">
+            <button className=" px-[10px] hover:bg-[#CC522B] hover:shadow-hover-button   w-[74px] h-full grid place-items-center text-white bg-primary  rounded-tr-[12px] rounded-br-[12px] text-sm font-semibold">
               Join
             </button>
           </div>

@@ -4,16 +4,16 @@ export default function Pagination() {
       <span className="text-sm lg:rounded-tl-[12px]  rounded-tl-[8px] lg:rounded-bl-[12px] rounded-bl-[8px] font-bold text-[#BDBDBD] lg:p-[25px]  p-[17px] bg-[#F3F3F3] border-r border-[#BDBDBD]">
         First
       </span>
-      <span className=" text-sm bg-white font-bold text-primary   lg:px-5 px-[13px] py-[17px] lg:py-[25px] border-r border-[#E9E9E9] ">
+      <span className=" cursor-pointer hover:bg-primary hover:text-white text-sm bg-white font-bold text-primary   lg:px-5 px-[13px] py-[17px] lg:py-[25px] border-r border-[#E9E9E9] ">
         1
       </span>
-      <span className=" text-sm bg-primary font-bold text-white  text- g:px-5 px-[13px] py-[17px] lg:py-[25px] border-r border-[#E9E9E9]">
+      <span className="cursor-pointer text-sm bg-primary font-bold text-white  text- g:px-5 px-[13px] py-[17px] lg:py-[25px] border-r border-[#E9E9E9]">
         2
       </span>
-      <span className=" text-sm font-bold text-primary bg-white   text- g:px-5 px-[13px] py-[17px] lg:py-[25px] ]border-r border-[#E9E9E9">
+      <span className=" cursor-pointer hover:bg-primary hover:text-white text-sm font-bold text-primary bg-white   text- g:px-5 px-[13px] py-[17px] lg:py-[25px] ]border-r border-[#E9E9E9">
         3
       </span>
-      <span className="text-sm lg:rounded-tr-[12px] rounded-tr-[8px] lg:rounded-br-[12px] rounded-br-[8px]  font-bold p-[17px] lg:p-[25px]  bg-white text-primary border-r border-[#BDBDBD]">
+      <span className="text-sm  cursor-pointer lg:rounded-tr-[12px] rounded-tr-[8px] lg:rounded-br-[12px] rounded-br-[8px] hover:bg-primary hover:text-white  font-bold p-[17px] lg:p-[25px]  bg-white text-primary border-r border-[#BDBDBD]">
         Next
       </span>
     </div>

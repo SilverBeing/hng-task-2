@@ -28,7 +28,7 @@ export default function Modal({ isShowing, children, hide }) {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.8 }}
                 transition={{ duration: 0.1 }}
-                className=" transition-all ease-linear rounded-[24px]   bg-white  p-10 w-max"
+                className=" transition-all ease-linear rounded-[24px]   bg-white  p-4 lg:p-10 w-max"
               >
                 <div>
                   <button onClick={hide} className=" w-max float-right">

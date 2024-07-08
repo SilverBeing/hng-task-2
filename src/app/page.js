@@ -10,9 +10,11 @@ export default function Home() {
     <>
       <HeroSection />
       <About />
-      <BookCollection title="Best Seller" data={books["best-seller"]} />
-      <BookCollection title="Editor's Pick" data={books["editor-pack"]} />
-      <MostSearch />
+      <div id="products">
+        <BookCollection title="Best Seller" data={books["best-seller"]} />
+        <BookCollection title="Editor's Pick" data={books["editor-pack"]} />
+        <MostSearch />
+      </div>
       <Pagination />
     </>
   );

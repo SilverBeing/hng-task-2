@@ -7,11 +7,11 @@ export default function layout({ children }) {
   return (
     <div>
       <MobileNav background={"bg-[#F9F9FB]"} />
-      <div className="  hidden lg:block pt-10 max-w-[1058px] mx-auto w-full">
+      <div className="  hidden lg:block pt-10 max-w-[1058px] lg:mb-[56px] mx-auto w-full">
         <Search />
       </div>
-      <div className="mt-[118px] lg:px-[100px] px-4">
-        <div className=" mb-10">
+      <div className=" mt-5 lg:mt-0 lg:px-[100px] px-4">
+        <div className=" mb-4 lg:mb-10">
           <Title />
         </div>
         <div>

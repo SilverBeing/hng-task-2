@@ -76,10 +76,9 @@ const shoppingCart = (
 const menu = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    preserveAspectRatio="none"
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
+    width="48"
+    height="48"
+    viewBox="0 0 48 48"
     fill="none"
   >
     <mask
@@ -88,14 +87,14 @@ const menu = (
       maskUnits="userSpaceOnUse"
       x="0"
       y="0"
-      width="24"
-      height="24"
+      width="48"
+      height="48"
     >
-      <rect width="24" height="24" fill="#D9D9D9" />
+      <rect width="48" height="48" fill="#D9D9D9" />
     </mask>
     <g mask="url(#mask0_223_1033)">
       <path
-        d="M3 18V16H21V18H3ZM3 13V11H21V13H3ZM3 8V6H21V8H3Z"
+        d="M6 36V32H42V36H6ZM6 26V22H42V26H6ZM6 16V12H42V16H6Z"
         fill="#1C1C1C"
       />
     </g>
@@ -496,6 +495,7 @@ const cancel = (
 const minus = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
+    preserveAspectRatio="none"
     width="27"
     height="26"
     viewBox="0 0 27 26"
@@ -513,6 +513,7 @@ const minus = (
 const plus = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
+    preserveAspectRatio="none"
     width="26"
     height="26"
     viewBox="0 0 26 26"

@@ -10,7 +10,7 @@ export default function Search() {
         <Link href="/">
           <Image src={logo} alt="Logo" />
         </Link>
-        <div className=" border-[0.5px] border-solid border-[#C4C6D3)] rounded-[12px] max-[538px] px-[18px] bg-[#F5F7FA] w-full flex gap-3 items-center py-3 text-[#1D2026]">
+        <div className="  border-[0.5px] border-solid border-[#C4C6D3)] rounded-[12px] max-[538px] px-[18px] bg-[#F5F7FA] w-full flex gap-3 items-center py-3 text-[#1D2026]">
           <span>{search}</span>
           <input
             className=" placeholder:text-[#8C94A3] text-base bg-transparent w-full"
@@ -19,15 +19,15 @@ export default function Search() {
         </div>
       </div>
       <div className=" flex items-center gap-4  ">
-        <span className=" text-[] p-3 border-[0.5px] border-solid rounded-[12px] border-[#C4C6D3] bg-[#F5F7FA]">
+        <span className=" hover:opacity-[0.8] text-[] p-3 border-[0.5px] border-solid rounded-[12px] border-[#C4C6D3] bg-[#F5F7FA]">
           {person}
         </span>
-        <span className=" p-3 border-[0.5px] border-solid rounded-[12px] border-[#C4C6D3] bg-[#F5F7FA]">
+        <span className=" hover:opacity-[0.8] p-3 border-[0.5px] border-solid rounded-[12px] border-[#C4C6D3] bg-[#F5F7FA]">
           {heart}
         </span>
         <Link
           href="/cart"
-          className=" relative p-3 border-[0.5px] border-solid rounded-[12px] border-[#C4C6D3] bg-[#F5F7FA]"
+          className=" hover:opacity-[0.8] relative p-3 border-[0.5px] border-solid rounded-[12px] border-[#C4C6D3] bg-[#F5F7FA]"
         >
           <div className=" relative">
             <svg

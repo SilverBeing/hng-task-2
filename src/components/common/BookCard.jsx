@@ -1,5 +1,5 @@
 "use client";
-import { fullHeart, star } from "@/assets/icons";
+import { fullHeart, heart, star } from "@/assets/icons";
 import { useState } from "react";
 import BookDetail from "./BookDetail";
 import BookImage from "./BookImage";
@@ -8,11 +8,12 @@ import Modal from "./Modal";
 
 export default function BookCard({ book }) {
   const [openModal, setOpenModal] = useState(false);
+  const [like, setLike] = useState(true);
   const { image, title, author, amount, rating } = book;
   return (
     <>
       <div className="lg:min-w-[233px]  min-w-[150px]">
-        <div className=" cursor-pointer" onClick={() => setOpenModal(true)}>
+        <div className=" ">
           <BookImage image={image} />
         </div>
         <div>
@@ -35,12 +36,18 @@ export default function BookCard({ book }) {
               {amount}
             </p>
             <div className=" flex items-center justify-between  gap-4">
-              <Button className="lg:text-base text-[10px] flex-1 h-10 px-0 py-0">
+              <Button
+                onClick={() => setOpenModal(true)}
+                className="lg:text-base text-[10px] flex-1 h-10 px-0 py-0"
+              >
                 Add to Cart
               </Button>
-              <div className=" py-[6px] lg:py-2 px-2 lg:px-3 rounded-[8px] bg-[#FFEEE8]">
-                {fullHeart}
-              </div>
+              <button
+                onClick={() => setLike(!like)}
+                className=" py-[6px] lg:py-2 px-2 lg:px-3 rounded-[8px] bg-[#FFEEE8]"
+              >
+                {like ? fullHeart : heart}
+              </button>
             </div>
           </div>
         </div>

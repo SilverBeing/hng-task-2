@@ -3,9 +3,9 @@
 import {
   arrowDown,
   arrowUp,
+  heart,
   menu,
-  smallCart,
-  smallHeart,
+  shoppingCart,
   whiteSearch,
 } from "@/assets/icons";
 import useOnClickOutside from "@/utils/useOnClickOutsite";
@@ -40,38 +40,29 @@ export default function MobileNav({ background = "bg-hero-gradient " }) {
 
   return (
     <>
-      <div
-        className={` z-50 ${background} lg:hidden block fixed w-full top-0 left-0`}
-      >
-        <div className=" flex items-center justify-between py-5 px-10">
+      <div className={`  bg-transparent lg:hidden block w-full `}>
+        <div className=" flex items-center justify-between py-5 px-5">
           <button onClick={() => setModal(true)}>{menu}</button>
-          <div className=" flex items-center gap-3">
-            <span className=" p-[6px] border-[0.5px] border-solid rounded-[6px] border-[#C4C6D3] bg-[#F5F7FA]">
-              {smallHeart}
+          <div className=" flex items-center gap-4">
+            <span className=" hover:opacity-[0.8] p-3 border-[0.5px] border-solid rounded-[12px] border-[#C4C6D3] bg-[#F5F7FA]">
+              {heart}
             </span>
             <Link
               href="/cart"
-              className=" relative p-[6px] border-[0.5px] border-solid rounded-[6px] border-[#C4C6D3] bg-[#F5F7FA]"
+              className=" hover:opacity-[0.8] relative p-3 border-[0.5px] border-solid rounded-[12px] border-[#C4C6D3] bg-[#F5F7FA]"
             >
               <div className=" relative">
                 <svg
-                  className="absolute right-0 top-0"
+                  className="absolute right-1 top-0"
                   xmlns="http://www.w3.org/2000/svg"
-                  width="5"
-                  height="5"
-                  viewBox="0 0 5 5"
+                  width="10"
+                  height="10"
+                  viewBox="0 0 10 10"
                   fill="none"
                 >
-                  <circle
-                    cx="2.5"
-                    cy="2.5"
-                    r="2"
-                    fill="#FF6636"
-                    stroke="white"
-                    stroke-width="0.5"
-                  />
+                  <circle cx="5" cy="5" r="4" fill="#FF6636" stroke="white" />
                 </svg>
-                {smallCart}
+                {shoppingCart}
               </div>
             </Link>
           </div>
@@ -84,13 +75,13 @@ export default function MobileNav({ background = "bg-hero-gradient " }) {
         >
           <div
             ref={ref}
-            className=" w-max py-[60px] bg-white px-10  min-h-screen"
+            className="  w-max py-[60px] bg-white px-5  min-h-screen"
           >
-            <div className=" max-w-[247px] h-[40px] w-full flex items-center  ">
-              <div className="h-full  rounded-tl-[12px] rounded-bl-[12px] px-3 bg-white">
+            <div className="h-[40px] w-full flex items-center  ">
+              <div className="h-full  rounded-tl-[12px] rounded-bl-[12px]  bg-white">
                 <input
                   placeholder="Enter Your Email"
-                  className="flex-1 truncate placeholder:text-sm placeholder:text-[rgba(110,116,133,0.80] h-full  min-w-[30px]"
+                  className=" px-3 max-w-[198px] truncate placeholder:text-sm placeholder:text-[rgba(110,116,133,0.80] h-full  "
                 />
               </div>
               <button
@@ -106,7 +97,7 @@ export default function MobileNav({ background = "bg-hero-gradient " }) {
                   onClick={() => setDropDown(!dropdown)}
                   className={`${
                     dropdown && "bg-[#FFDDD1]"
-                  } flex items-center justify-between text-primary py-4 px-5 w-full text-sm font-medium border-t border-[#EAEAEA] `}
+                  } flex items-center hover:bg-primary hover:text-white justify-between text-primary py-4 px-5 w-full text-sm font-medium border-t border-[#EAEAEA] `}
                 >
                   SHOP <span>{dropdown ? arrowUp : arrowDown}</span>
                 </button>
@@ -123,7 +114,7 @@ export default function MobileNav({ background = "bg-hero-gradient " }) {
               {data.map((item) => (
                 <div
                   key={item}
-                  className=" text-primary py-4 px-5 text-sm font-medium border-t border-[#EAEAEA]"
+                  className="  hover:bg-primary hover:text-white text-primary py-4 px-5 text-sm font-medium border-t border-[#EAEAEA]"
                 >
                   <p>{item}</p>
                 </div>

@@ -6,7 +6,7 @@ import { useState } from "react";
 export default function CartSummary() {
   const [data, setData] = useState("Pick up");
   return (
-    <div className="w-full mt-6 lg-mt-0 lg:w-[32.5%]  ">
+    <div className="w-full mt-6 lg:mt-0 lg:w-[32.5%]  ">
       <div className="lg:p-10 p-8    rounded-[24px]  border-[0.5px] border-[#6C7275] bg-white">
         <div>
           <h2 className=" text-black  text-base lg:text-[20px] font-medium mb-6">
@@ -14,9 +14,10 @@ export default function CartSummary() {
           </h2>
           <label
             htmlFor="pickUp"
+            onClick={() => setData("Pick up")}
             className={` ${
               data === "Pick up" ? "bg-[#FFEEE8]" : "bg-[#FEFEFE]"
-            } border-[0.5px] flex gap-4 items-center rounded-[8px] px-4  text-sm lg:text-base text-[#1C1C1C] mb-4 py-3 border-[#6C7275]`}
+            } border-[0.5px] flex gap-4 items-center rounded-[8px] px-4  text-sm lg:text-base text-[#1C1C1C] cursor-pointer mb-4 py-3 border-[#6C7275]`}
           >
             <input
               type="radio"
@@ -30,9 +31,10 @@ export default function CartSummary() {
           </label>
           <label
             htmlFor="shipping"
+            onClick={() => setData("Shipping")}
             className={` ${
               data === "Shipping" ? "bg-[#FFEEE8]" : "bg-[#FEFEFE]"
-            } border-[0.5px] flex gap-4 mb-6 items-center rounded-[8px] px-4 text-sm lg:text-base text-[#1C1C1C] py-3 border-[#6C7275]`}
+            } border-[0.5px] flex gap-4 mb-6 items-center rounded-[8px] px-4 text-sm lg:text-base cursor-pointer text-[#1C1C1C] py-3 border-[#6C7275]`}
           >
             <input
               type="radio"

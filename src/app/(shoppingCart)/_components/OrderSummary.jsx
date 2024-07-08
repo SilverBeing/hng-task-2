@@ -1,11 +1,11 @@
 "use client";
-import { minus, plus } from "@/assets/icons";
 import Button from "@/components/common/Button";
 import Modal from "@/components/common/Modal";
 import { cartItems } from "@/data";
 import Image from "next/image";
 import { useState } from "react";
 import PaymentComplete from "./PaymentComplete";
+import QuantityControl from "./QuantityControl";
 
 export default function OrderSummary() {
   const [open, setOpen] = useState(false);
@@ -39,17 +39,7 @@ export default function OrderSummary() {
                     <p className=" mb-1 text-xs text-normal text-[#73768A]">
                       {item.author}
                     </p>
-                    <div className="max-w-[54px] lg:max-w-[96px] flex items-center   bg-white ">
-                      <span className=" w-[33px] rounded-tl-[8px] rounded-bl-[8px]   border border-[#73768A]  h-[33px] grid place-items-center [&>svg]">
-                        {minus}
-                      </span>
-                      <span className=" text-[#1C1C1C] border-y border-[#73768A] w-[33px] h-[33px] grid place-items-center  text-[24px]">
-                        {item.quantity}
-                      </span>
-                      <span className=" w-[33px]   border border-[#73768A]  h-[33px] grid place-items-center rounded-tr-[8px] rounded-br-[8px] ">
-                        {plus}
-                      </span>
-                    </div>
+                    <QuantityControl quantity={item.quantity} />
                   </div>
                 </div>
 
@@ -81,7 +71,7 @@ export default function OrderSummary() {
                 placeholder="Coupon Code"
                 className="flex-1  min-w-[30px]"
               />
-              <button className=" px-3 lg:px-4   h-10 grid place-items-center text-white bg-darkBlue rounded-[8px] text-[10px] lg:text-sm font-semibold">
+              <button className=" hover:opacity-[0.8] px-3 lg:px-4   h-10 grid place-items-center text-white bg-darkBlue rounded-[8px] text-[10px] lg:text-sm font-semibold">
                 Apply
               </button>
             </div>

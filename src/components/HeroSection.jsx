@@ -2,13 +2,15 @@
 import { heroImage1, heroImage2, logo } from "@/assets";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import Button from "./common/Button";
 import HomeNav from "./HomeNav";
+import Button from "./common/Button";
 
 export default function HeroSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const images = [heroImage1, heroImage2];
+  const router = useRouter();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -17,9 +19,9 @@ export default function HeroSection() {
     return () => clearInterval(interval);
   }, [images.length]);
   return (
-    <div className=" py-10 md:px-10 px-4 lg:px-[102px] min-h-[877px] bg-hero-gradient ">
+    <div className=" lg:py-10 md:px-10  px-0 lg:px-[102px] min-h-[877px] bg-hero-gradient ">
       <HomeNav />
-      <div className=" mt-[65px] flex flex-wrap lg:items-center justify-center lg:justify-between">
+      <div className=" px-4 lg:px-0 mt-[65px] flex flex-wrap lg:items-center justify-center lg:justify-between">
         <div className="lg:w-[46.5%] max-w-[574px] w-full ">
           <div className=" lg:hidden ">
             <Image src={logo} alt="" className="mx-auto" />
@@ -33,14 +35,19 @@ export default function HeroSection() {
             classics, or hidden gems, our curated selection has something for
             every reader.
           </p>
-          <Button className=" w-full mx-auto lg:mx-0 md:w-[182px] px-6 py-4 rounded-[12px] text-base font-medium text-primary bg-white ">
-            Shop Now
-          </Button>
+          <div className=" w-full">
+            <Button
+              onClick={() => router.push("/#products")}
+              className=" w-full mx-auto hover:bg-[#FFDDD1] lg:mx-0 hover:shadow-none md:w-[182px] px-6 py-4 rounded-[12px] text-base font-medium text-primary hover:text-primary  bg-white "
+            >
+              Shop Now
+            </Button>
+          </div>
         </div>
         <div className="lg:w-[48%] w-full mt-8 lg:mt-0">
           <AnimatePresence mode="wait">
             <motion.img
-              key={images[currentIndex]}
+              key={currentIndex}
               src={images[currentIndex].src}
               alt={`Slide ${currentIndex}`}
               initial={{ opacity: 0 }}
