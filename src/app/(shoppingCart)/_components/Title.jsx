@@ -17,7 +17,7 @@ export default function Title() {
     },
   };
   return (
-    <div>
+    <div className="flex items-center justify-between">
       <button className=" hidden lg:block" onClick={() => router.push("/")}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -73,9 +73,10 @@ export default function Title() {
         </svg>
       </button>
 
-      <h1 className=" lg:mt-4 text-[36px] lg:text-[57px] font-medium text-[#1C1C1C] text-center">
+      <h1 className="  text-[36px] lg:text-[57px] font-medium text-[#1C1C1C] text-center">
         {data[pathname].title}
       </h1>
+      <div></div>
     </div>
   );
 }
