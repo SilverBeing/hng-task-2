@@ -47,7 +47,7 @@ export default function HeroSection() {
         <div className="lg:w-[48%] w-full mt-8 lg:mt-0">
           <AnimatePresence mode="wait">
             <motion.img
-              key={currentIndex}
+              key={images[currentIndex]}
               src={images[currentIndex].src}
               alt={`Slide ${currentIndex}`}
               initial={{ opacity: 0 }}
