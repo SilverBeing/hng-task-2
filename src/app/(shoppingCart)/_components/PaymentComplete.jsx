@@ -14,7 +14,7 @@ export default function PaymentComplete({ hide }) {
       </p>
       <div className="mt-[14px] lg:mt-[34px]">
         <Link
-          className=" text-[6px] rounded-[4px] lg:rounded-[8px] h-[23px] lg:text-base lg:h-[52px] text-white grid place-items-center bg-primary hover:shadow-hover-button"
+          className=" text-xs rounded-[4px] lg:rounded-[8px] h-[30px] lg:text-base lg:h-[52px] text-white grid place-items-center bg-primary hover:shadow-hover-button"
           onClick={hide}
           href="/"
         >

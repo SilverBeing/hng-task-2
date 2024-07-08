@@ -37,7 +37,7 @@ export default function BookDetail({ book }) {
         <p className=" text-xs lg:text-xl font-medium"> {amount}</p>
       </div>
       <div>
-        <div className=" lg:mb-4">
+        <div className=" mb-3 lg:mb-4">
           <Link
             href="/cart"
             className=" w-full text-xs hover:bg-[#CC522B] hover:shadow-hover-button lg:text-base px-[24px] grid place-items-center rounded-[4px] lg:rounded-[8px] h-[29px] lg:h-[52px] bg-primary text-white"
