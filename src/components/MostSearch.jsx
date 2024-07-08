@@ -4,7 +4,7 @@ import CollectionTitle from "./common/CollectionTitle";
 
 export default function MostSearch() {
   return (
-    <div className=" mb-[129px]">
+    <div className=" lg:mb-[129px]">
       <div className="lg:px-[107px]">
         <CollectionTitle>Most Search</CollectionTitle>
       </div>
