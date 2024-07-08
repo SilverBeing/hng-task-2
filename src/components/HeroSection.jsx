@@ -21,7 +21,7 @@ export default function HeroSection() {
   return (
     <div className=" lg:py-10 md:px-10  px-0 lg:px-[102px] min-h-[877px] bg-hero-gradient ">
       <HomeNav />
-      <div className=" px-4 lg:px-0 mt-[65px] flex flex-wrap lg:items-center justify-center lg:justify-between">
+      <div className=" px-4 lg:px-0 lg:mt-[65px] mt-5 flex flex-wrap items-center justify-center lg:justify-between">
         <div className="lg:w-[46.5%] max-w-[574px] w-full ">
           <div className=" lg:hidden ">
             <Image src={logo} alt="" className="mx-auto" />
