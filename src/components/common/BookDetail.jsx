@@ -32,7 +32,7 @@ export default function BookDetail({ book }) {
           <p className=" text-base lg:text-xl text-[#1C1C1C]">1 X {amount}</p>
         </div>
       </div>
-      <div className="mt-6 mb-[48px] flex justify-between items-center">
+      <div className="lg:mt-6 my-2 lg:mb-[48px] flex justify-between items-center">
         <span className=" text-xs lg:text-xl font-medium">Subtotal:</span>
         <p className=" text-xs lg:text-xl font-medium"> {amount}</p>
       </div>

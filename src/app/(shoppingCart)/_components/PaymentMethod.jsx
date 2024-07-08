@@ -9,7 +9,7 @@ import InputField from "./InputField";
 export default function PaymentMethod() {
   return (
     <div className="p-[22px] lg:p-10 bg-white w-full border-[0.5px] border-[#6C7275;] rounded-[24px] ">
-      <h2 className=" text-base lg:text-[32px] mb-10 font-semibold text-darkblue ">
+      <h2 className=" text-base lg:text-[32px] mb-3 lg:mb-10 font-semibold text-darkblue ">
         Payment Method
       </h2>
       <div className=" space-y-6">

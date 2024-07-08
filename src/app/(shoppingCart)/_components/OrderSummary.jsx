@@ -13,7 +13,7 @@ export default function OrderSummary() {
     <>
       <div className="lg:p-10 p-7 flex-1  rounded-[17px] lg:rounded-[24px]  border-[0.5px] border-[#6C7275] bg-white">
         <div>
-          <h2 className=" text-black text-base lg:text-[20px] font-medium mb-6">
+          <h2 className=" text-black text-base lg:text-[20px] font-medium mb-6 lg:mb-6">
             Order Summary
           </h2>
         </div>

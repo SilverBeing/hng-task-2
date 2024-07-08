@@ -78,10 +78,10 @@ export default function MobileNav({ background = "bg-hero-gradient " }) {
             className="  w-max py-[60px] bg-white px-5  min-h-screen"
           >
             <div className="h-[40px] w-full flex items-center  ">
-              <div className="h-full  rounded-tl-[12px] rounded-bl-[12px]  bg-white">
+              <div className="h-full border border-primary  rounded-tl-[12px] rounded-bl-[12px]  bg-white">
                 <input
                   placeholder="Enter Your Email"
-                  className=" px-3 max-w-[198px] truncate placeholder:text-sm placeholder:text-[rgba(110,116,133,0.80] h-full  "
+                  className=" rounded-tl-[12px] rounded-bl-[12px]  px-3 max-w-[198px] truncate placeholder:text-sm placeholder:text-[rgba(110,116,133,0.80] h-full  "
                 />
               </div>
               <button
