@@ -28,7 +28,7 @@ export default function About() {
     <div className=" px-[25px] py-10 lg:px-0 lg:py-0">
       <div className="flex max-w-[1048px]  flex-wrap lg:flex-nowrap lg:top-[-120px] relative mx-auto   bg-white p-2 items-center shadow-about-card gap-6 rounded-[12px]">
         {data.map((item) => (
-          <div className=" text-center px-10 py-[35px] " key={item.id}>
+          <div className=" w-full lg:w-auto text-center px-10 py-[35px] " key={item.id}>
             <div className=" w-max mx-auto text-center">{item.icon}</div>
             <h2 className=" my-[10px] lg:whitespace-nowrap font-medium text-base lg:text-xl text-darkBlue">
               {item.title}
