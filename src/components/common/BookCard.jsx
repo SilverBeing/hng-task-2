@@ -4,7 +4,7 @@ import { formatNumber } from "@/utils";
 import useCart from "@/utils/useCart";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner";
 import BookDetail from "./BookDetail";
@@ -21,7 +21,7 @@ export default function BookCard({ book }) {
   const updatedInfo = JSON?.parse(description || "{}") || {};
   const itemAmount = Number(updatedInfo.amount);
   const router = useRouter();
-
+  const pathname = usePathname();
   const image = photos?.[0]?.url ?? "";
   const itemToAdd = {
     image,
@@ -38,7 +38,7 @@ export default function BookCard({ book }) {
       toast(`Yeaa💃`, {
         description: `You’ve added more of ${name.toUpperCase()} to your cart.`,
         action: {
-          label: "View Cart",
+          label: pathname === "/cart" ? "Close" : "View Cart",
           onClick: () => router.push("/cart"),
         },
       });
@@ -48,7 +48,7 @@ export default function BookCard({ book }) {
       toast(`Great choice! 😁`, {
         description: `${name.toUpperCase()} is now in your cart.`,
         action: {
-          label: "View Cart",
+          label: pathname === "/cart" ? "Close" : "View Cart",
           onClick: () => router.push("/cart"),
         },
       });
@@ -66,7 +66,7 @@ export default function BookCard({ book }) {
         <div>
           <div className=" flex mb-4 justify-between ">
             <div className=" mt-[19px]">
-              <h3 className=" w-full capitalize max-w-[233px] truncate block text-ellipsis  text-[#1C1C1C] text-[10px] lg:text-base font-medium mb-[4px]">
+              <h3 className=" w-full capitalize max-w-[120px] lg:max-w-[233px] truncate block text-ellipsis  text-[#1C1C1C] text-[10px] lg:text-base font-medium mb-[4px]">
                 {name}
               </h3>
               <p className=" truncate text-[9px] lg:text-sm font-normal text-[#73768A]">

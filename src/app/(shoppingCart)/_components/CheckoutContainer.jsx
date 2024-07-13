@@ -1,4 +1,5 @@
 "use client";
+import useCart from "@/utils/useCart";
 import { useState } from "react";
 import { toast } from "sonner";
 import ContactInfo from "./ContactInfo";
@@ -28,13 +29,11 @@ export default function CheckoutContainer() {
     }
     return false;
   };
-
+  const { resetCart, cartItems } = useCart();
   const handleChange = (e) => {
     const { name, value } = e.target;
-
     if (name === "date") {
       let input = value.replace(/\D/g, "");
-
       let formattedDate = "";
       if (input.length <= 2) {
         formattedDate = input;
@@ -42,7 +41,7 @@ export default function CheckoutContainer() {
         const month = parseInt(input.substring(0, 2), 10);
         const year = input.substring(2, 4);
         if (month > 12) {
-          formattedDate = "12/" + year; // Correct month to 12 if it's greater than 12
+          formattedDate = "12/" + year;
         } else {
           formattedDate = input.substring(0, 2) + "/" + year;
         }
@@ -62,13 +61,13 @@ export default function CheckoutContainer() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     if (checkEmptyKeys(formData)) {
-      console.log(formData);
       toast("Please fill in all fields");
     } else {
-      console.log(formData);
       setOpen(true);
       setFormData(data);
+      resetCart();
     }
   };
   return (

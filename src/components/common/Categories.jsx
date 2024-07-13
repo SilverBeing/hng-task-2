@@ -19,9 +19,9 @@ export default function Categories({ data }) {
         }
         router.push(`/products?category=${value}`);
       }}
-      className=" max-w-[350px] mx-auto mb-[62px]"
+      className=" max-w-[350px] mx-auto mb-9 lg:mb-[62px]"
     >
-      <SelectTrigger className="max-w-[350px] mx-auto capitalize mb-[60px] mt-[86px] py-4 px-6 rounded-[12px] ">
+      <SelectTrigger className="max-w-[350px] mx-auto capitalize mb-10 lg:mb-[60px] mt-[86px] py-4 px-6 rounded-[12px] ">
         <SelectValue
           className="capitalize lg:text-[31px]"
           placeholder="Select"

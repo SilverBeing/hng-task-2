@@ -12,7 +12,7 @@ export default function CartSummary() {
   const { total } = useCart();
   const router = useRouter();
   return (
-    <div className="w-full mt-6 lg:mt-0 lg:w-[32.5%] h-inherit  ">
+    <div className="w-full mt-[80px] lg:mt-0 lg:w-[32.5%] h-inherit  ">
       <div className="lg:p-10 p-8  h-full  rounded-[24px]  border-[0.5px] border-[#6C7275] bg-white">
         <div>
           <h2 className=" text-black  text-base lg:text-[20px] font-medium mb-6">

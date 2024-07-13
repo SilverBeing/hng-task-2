@@ -19,41 +19,43 @@ export default function OrderSummary({ check, open, setOpen }) {
           </h2>
         </div>
         <div className="">
-          <div className=" h-[308px] overflow-y-auto scroll-style">
-            {cartItems.map((item) => (
-              <div
-                key={item.id}
-                className={`flex-wrap   border-b border-solid border-[#EAEAEA] py-4 flex gap-2 items-center justify-between`}
-              >
-                <div className={`  flex gap-4 items-center`}>
-                  <div className="px-[10px] w-[74px] lg:w-[100px]  py-[10px] bg-white shadow-book-card rounded-[11px]">
-                    <Image
-                      src={`https://api.timbu.cloud/images/${item.image}`}
-                      alt={item.title}
-                      className="lg:w-[85px] w-[62px] mx-auto"
-                      width={233}
-                      height={238}
-                    />
+          {cartItems.length > 0 && (
+            <div className=" h-[308px] overflow-y-auto scroll-style">
+              {cartItems.map((item) => (
+                <div
+                  key={item.id}
+                  className={`flex-wrap   border-b border-solid border-[#EAEAEA] py-4 flex gap-2 items-center justify-between`}
+                >
+                  <div className={`  flex gap-4 items-center`}>
+                    <div className="px-[10px] w-[74px] lg:w-[100px]  py-[10px] bg-white shadow-book-card rounded-[11px]">
+                      <Image
+                        src={`https://api.timbu.cloud/images/${item.image}`}
+                        alt={item.title}
+                        className="lg:w-[85px] w-[62px] mx-auto"
+                        width={233}
+                        height={238}
+                      />
+                    </div>
+                    <div>
+                      <h2 className=" text-[#1C1C1C] mb-1 lg:text-sm text-xs font-medium">
+                        {item.title}
+                      </h2>
+                      <p className=" mb-1 text-xs text-normal text-[#73768A]">
+                        {item.author}
+                      </p>
+                      <QuantityControl quantity={item.quantity} item={item} />
+                    </div>
                   </div>
-                  <div>
-                    <h2 className=" text-[#1C1C1C] mb-1 lg:text-sm text-xs font-medium">
-                      {item.title}
-                    </h2>
-                    <p className=" mb-1 text-xs text-normal text-[#73768A]">
-                      {item.author}
-                    </p>
-                    <QuantityControl quantity={item.quantity} item={item} />
-                  </div>
-                </div>
 
-                <div>
-                  <p className=" text-xs lg:text-[20px] font-medium text-[#1C1C1C]">
-                    {formatNumber(item.subtotal)}
-                  </p>
+                  <div>
+                    <p className=" text-xs lg:text-[20px] font-medium text-[#1C1C1C]">
+                      {formatNumber(item.subtotal)}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
 
           <div className=" py-3 mt-4 border-b border-solid border-[#EAEAEA]  flex items-center justify-between">
             <span className=" text-xs lg:text-sm text-[#6E7485]">Quantity</span>
@@ -86,15 +88,17 @@ export default function OrderSummary({ check, open, setOpen }) {
             {formatNumber(total.totalPrice)}
           </p>
         </div>
-        <div className="mt-10">
-          <Button
-            disabled={check}
-            type="submit"
-            className=" h-[52px] w-full px-6 py-[10px]"
-          >
-            Complete Payment
-          </Button>
-        </div>
+        {cartItems.length > 0 && (
+          <div className="mt-10">
+            <Button
+              disabled={check}
+              type="submit"
+              className=" h-[52px] w-full px-6 py-[10px]"
+            >
+              Complete Payment
+            </Button>
+          </div>
+        )}
       </div>
 
       <Modal isShowing={open} hide={() => setOpen(false)}>
