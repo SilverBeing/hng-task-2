@@ -9,7 +9,7 @@ export default function Error({ error, reset }) {
   }, [error]);
 
   return (
-    <div className=" h-full w-full text-center grid justify-center mt-[180px]">
+    <div className=" h-full w-full text-center grid justify-center my-[180px]">
       <div>
         <h2 className=" text-xlg text-darkblue font-bold">
           Something went wrong!
@@ -18,10 +18,10 @@ export default function Error({ error, reset }) {
           className=" px-[30px] rounded-md  font-semibold py-[16px] bg-neon text-center text-darkblue"
           onClick={
             // Attempt to recover by trying to re-render the segment
-            () => reset()
+            () => reset
           }
         >
-          Try again
+          Please refresh
         </button>
       </div>
     </div>
