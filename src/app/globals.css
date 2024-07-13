@@ -99,3 +99,16 @@ body {
 .scroll-style::-webkit-scrollbar-thumb {
   background-color: #ff6636;
 }
+h-inherit {
+  height: inherit !important;
+}
+/* Custom CSS to remove the number indicator (spinner) */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}

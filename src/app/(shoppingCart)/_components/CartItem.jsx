@@ -3,11 +3,16 @@ import { cancel } from "@/assets/icons";
 import { formatNumber } from "@/utils";
 import useCart from "@/utils/useCart";
 import Image from "next/image";
+import { toast } from "sonner";
 import QuantityControl from "./QuantityControl";
 
 export default function CartItem({ item }) {
   const { image, title, author, amount, subtotal, id, quantity } = item;
-  const { removeFromCart } = useCart();
+  const { removeFromCart, isItemAlreadyInCart } = useCart();
+  const handleRemove = () => {
+    toast(`removed from cart 😩`);
+    removeFromCart(id);
+  };
   return (
     <tr>
       <td className=" ">
@@ -26,7 +31,7 @@ export default function CartItem({ item }) {
             />
           </div>
           <div>
-            <h2 className=" text-[#1C1C1C] mb-1 text-[10px] lg:text-sm font-medium">
+            <h2 className=" max-w-[185px] text-[#1C1C1C] mb-1 text-[10px] lg:text-sm font-medium">
               {title}
             </h2>
             <p className=" mb-1 text-[8px] lg:text-xs text-normal text-[#73768A]">
@@ -38,7 +43,7 @@ export default function CartItem({ item }) {
               5430 Reviews
             </p>
             <button
-              onClick={() => removeFromCart(id)}
+              onClick={handleRemove}
               className=" mt-2 flex gap-2 items-center"
             >
               <span className=" hidden lg:block">{cancel}</span>

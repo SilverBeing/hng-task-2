@@ -1,16 +1,19 @@
 "use client";
 import { arrowRight } from "@/assets/icons";
+import Button from "@/components/common/Button";
 import { formatNumber } from "@/utils";
 import useCart from "@/utils/useCart";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function CartSummary() {
   const [data, setData] = useState("Pick up");
+
   const { total } = useCart();
+  const router = useRouter();
   return (
-    <div className="w-full mt-6 lg:mt-0 lg:w-[32.5%]  ">
-      <div className="lg:p-10 p-8    rounded-[24px]  border-[0.5px] border-[#6C7275] bg-white">
+    <div className="w-full mt-6 lg:mt-0 lg:w-[32.5%] h-inherit  ">
+      <div className="lg:p-10 p-8  h-full  rounded-[24px]  border-[0.5px] border-[#6C7275] bg-white">
         <div>
           <h2 className=" text-black  text-base lg:text-[20px] font-medium mb-6">
             Cart Summary
@@ -55,7 +58,7 @@ export default function CartSummary() {
                 Quantity
               </span>
               <p className=" text-[#1C1C1C]  text-sm lg:text-base font-medium">
-                {total.productQuantity}
+                {total.productQuantity || 0}
               </p>
             </div>
 
@@ -68,17 +71,20 @@ export default function CartSummary() {
               </p>
             </div>
           </div>
-          <div className="mt-10">
-            <Link
-              href="/checkout"
-              className=" h-[52px] truncate w-full px-6 py-[10px] hover:bg-[#CC522B] hover:shadow-hover-button hover:text-white bg-primary text-white font-medium text-base grid place-items-center rounded-[8px]"
-            >
-              <div className=" gap-[10px] flex items-center ">
-                <p>Proceed To Checkout</p>
-                <span>{arrowRight}</span>
-              </div>
-            </Link>
-          </div>
+          {total.totalPrice > 0 && (
+            <div className="mt-10">
+              <Button
+                onClick={() => router.push("/checkout")}
+                disabled={total.totalPrice === 0}
+                className=" h-[52px] truncate w-full px-6 py-[10px] hover:bg-[#CC522B] hover:shadow-hover-button hover:text-white bg-primary text-white font-medium text-base grid place-items-center rounded-[8px]"
+              >
+                <div className=" gap-[10px] flex items-center ">
+                  <p>Proceed To Checkout</p>
+                  <span>{arrowRight}</span>
+                </div>
+              </Button>
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -23,7 +23,7 @@ export default function InputField({
           onChange={handleChange}
           name={name}
           {...rest}
-          className={`flex-1 min-w-[30px] placeholder:text-[#8C94A3] placeholder:text-[8px] lg:placeholder:text-base ${
+          className={`flex-1 outline-0 min-w-[30px] placeholder:text-[#8C94A3] placeholder:text-[8px] lg:placeholder:text-base ${
             icon && "pl-3"
           }`}
           placeholder={placeholder}

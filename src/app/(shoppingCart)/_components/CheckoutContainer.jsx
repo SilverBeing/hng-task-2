@@ -28,14 +28,38 @@ export default function CheckoutContainer() {
     }
     return false;
   };
+
   const handleChange = (e) => {
-    setFormData((prev) => {
-      return {
+    const { name, value } = e.target;
+
+    if (name === "date") {
+      let input = value.replace(/\D/g, "");
+
+      let formattedDate = "";
+      if (input.length <= 2) {
+        formattedDate = input;
+      } else {
+        const month = parseInt(input.substring(0, 2), 10);
+        const year = input.substring(2, 4);
+        if (month > 12) {
+          formattedDate = "12/" + year; // Correct month to 12 if it's greater than 12
+        } else {
+          formattedDate = input.substring(0, 2) + "/" + year;
+        }
+      }
+
+      setFormData((prev) => ({
         ...prev,
-        [e.target.name]: e.target.value,
-      };
-    });
+        [name]: formattedDate,
+      }));
+    } else {
+      setFormData((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+    }
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (checkEmptyKeys(formData)) {

@@ -4,6 +4,7 @@ import { formatNumber } from "@/utils";
 import useCart from "@/utils/useCart";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner";
 import BookDetail from "./BookDetail";
@@ -19,6 +20,7 @@ export default function BookCard({ book }) {
   const { addToCart, isItemAlreadyInCart } = useCart();
   const updatedInfo = JSON?.parse(description || "{}") || {};
   const itemAmount = Number(updatedInfo.amount);
+  const router = useRouter();
 
   const image = photos?.[0]?.url ?? "";
   const itemToAdd = {
@@ -33,10 +35,23 @@ export default function BookCard({ book }) {
   const handleAddToCart = () => {
     if (isItemAlreadyInCart(id)) {
       addToCart(itemToAdd);
-      toast(`You’ve added more of ${name.toUpperCase()} to your cart. `);
+      toast(`Yeaa💃`, {
+        description: `You’ve added more of ${name.toUpperCase()} to your cart.`,
+        action: {
+          label: "View Cart",
+          onClick: () => router.push("/cart"),
+        },
+      });
     } else {
       addToCart(itemToAdd);
-      toast(`Great choice! 😁 ${name.toUpperCase()} is now in your cart.`);
+
+      toast(`Great choice! 😁`, {
+        description: `${name.toUpperCase()} is now in your cart.`,
+        action: {
+          label: "View Cart",
+          onClick: () => router.push("/cart"),
+        },
+      });
     }
   };
   return (

@@ -23,8 +23,8 @@ export default function HeroSection() {
       <HomeNav />
       <div className=" px-4 lg:px-0 lg:mt-[65px] mt-5 flex flex-wrap items-center justify-center lg:justify-between">
         <div className="lg:w-[46.5%] max-w-[574px] w-full ">
-          <div className=" lg:hidden ">
-            <Image src={logo} alt="" className="mx-auto" />
+          <div className=" lg:hidden  ">
+            <Image src={logo} alt="" className="mx-auto " />
           </div>
           <h1 className=" lg:text-left text-center  text-[36px] leading-[44px]  text-darkBlue lg:text-[64px] font-bold tracking-[-0.25px] lg:leading-[64px] mb-2">
             Discover Your Next Great Read
@@ -44,7 +44,7 @@ export default function HeroSection() {
             </Button>
           </div>
         </div>
-        <div className="lg:w-[48%] w-full mt-8 lg:mt-0">
+        <div className="lg:w-[47%] w-full mt-8 lg:mt-0">
           <AnimatePresence mode="wait">
             <motion.img
               key={images[currentIndex]}
@@ -54,7 +54,7 @@ export default function HeroSection() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 1.5, ease: "easeInOut" }}
-              className="mx-auto  lg:mx-0"
+              className="mx-auto  lg:mx-auto w-full max-w-[588px]"
             />
           </AnimatePresence>
         </div>

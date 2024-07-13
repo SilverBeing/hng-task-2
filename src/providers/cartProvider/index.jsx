@@ -31,14 +31,11 @@ export default function CartContextProvider({ children }) {
   };
 
   const isItemAlreadyInCart = (id) => {
-   const valid =  cartItems.some(
-      (item) => item.id === id
-    );
-    return valid
-  }
+    const valid = cartItems.some((item) => item.id === id);
+    return valid;
+  };
   const addToCart = (newItem) => {
     let updatedItems;
-
 
     if (isItemAlreadyInCart(newItem.id)) {
       updatedItems = cartItems.map((item) => {
@@ -94,7 +91,7 @@ export default function CartContextProvider({ children }) {
         addToCart,
         removeFromCart,
         resetCart,
-        isItemAlreadyInCart
+        isItemAlreadyInCart,
       }}
     >
       {children}
