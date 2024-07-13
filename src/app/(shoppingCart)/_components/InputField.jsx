@@ -1,4 +1,12 @@
-export default function InputField({ label, icon, placeholder }) {
+export default function InputField({
+  label,
+  icon,
+  placeholder,
+  value,
+  name,
+  handleChange,
+  ...rest
+}) {
   return (
     <div className=" w-full">
       <label className=" text-darkBlue  text-[10px] lg:text-sm tracking-[-0.14px] capitalize mb-[6px]">
@@ -11,6 +19,10 @@ export default function InputField({ label, icon, placeholder }) {
       >
         {icon && <span className=" mr-3">{icon}</span>}
         <input
+          value={value}
+          onChange={handleChange}
+          name={name}
+          {...rest}
           className={`flex-1 min-w-[30px] placeholder:text-[#8C94A3] placeholder:text-[8px] lg:placeholder:text-base ${
             icon && "pl-3"
           }`}

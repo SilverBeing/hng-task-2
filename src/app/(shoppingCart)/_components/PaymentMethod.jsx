@@ -6,7 +6,8 @@ import {
 } from "@/assets/icons";
 import InputField from "./InputField";
 
-export default function PaymentMethod() {
+export default function PaymentMethod({ data, handleChange }) {
+  const { cardName, cardNumber, date, cvc } = data;
   return (
     <div className="p-[22px] lg:p-10 bg-white w-full border-[0.5px] border-[#6C7275;] rounded-[24px] ">
       <h2 className=" text-base lg:text-[32px] mb-3 lg:mb-10 font-semibold text-darkblue ">
@@ -26,15 +27,39 @@ export default function PaymentMethod() {
           </div>
           <span>{check}</span>
         </div>
-        <InputField placeholder="Name on card" label="Name" />
+        <InputField
+          value={cardName}
+          name="cardName"
+          handleChange={handleChange}
+          placeholder="Name on card"
+          label="Name"
+          type="text"
+        />
         <InputField
           placeholder="Label"
           label="Card Number"
           icon={smallCreditCard}
+          value={cardNumber}
+          name="cardNumber"
+          handleChange={handleChange}
+          type="number"
         />
         <div className="grid grid-cols-2 items-center gap-2 lg:gap-4">
-          <InputField placeholder="MM/YY" label="MM / YY" />
-          <InputField placeholder="CVC" label="Security Code" />
+          <InputField
+            placeholder="MM/YY"
+            label="MM / YY"
+            value={date}
+            name="date"
+            handleChange={handleChange}
+          />
+          <InputField
+            value={cvc}
+            name="cvc"
+            handleChange={handleChange}
+            placeholder="CVC"
+            label="Security Code"
+            type="number"
+          />
         </div>
         <div>
           <label className=" flex gap-1 items-center text-[8px] lg:text-sm text-[#4E5566] ">

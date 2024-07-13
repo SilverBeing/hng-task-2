@@ -1,10 +1,13 @@
 import { stars } from "@/assets";
 import { cancel } from "@/assets/icons";
+import { formatNumber } from "@/utils";
+import useCart from "@/utils/useCart";
 import Image from "next/image";
 import QuantityControl from "./QuantityControl";
 
 export default function CartItem({ item }) {
-  const { image, title, author, amount, subTotal, id, quantity } = item;
+  const { image, title, author, amount, subtotal, id, quantity } = item;
+  const { removeFromCart } = useCart();
   return (
     <tr>
       <td className=" ">
@@ -15,9 +18,11 @@ export default function CartItem({ item }) {
         >
           <div className="lg:px-[10px] px-1 w-[50px] lg:w-[100px]  py-[10px] bg-white shadow-book-card rounded-[11px]">
             <Image
-              src={image}
+              src={`https://api.timbu.cloud/images/${image}`}
               alt={title}
               className=" w-[42px] lg:w-[85px] mx-auto"
+              width={233}
+              height={238}
             />
           </div>
           <div>
@@ -32,7 +37,10 @@ export default function CartItem({ item }) {
             <p className=" text-[8px] hidden lg:block font-semibold tracking-[0.111px] text-[#737373]">
               5430 Reviews
             </p>
-            <div className=" mt-2 flex gap-2 items-center">
+            <button
+              onClick={() => removeFromCart(id)}
+              className=" mt-2 flex gap-2 items-center"
+            >
               <span className=" hidden lg:block">{cancel}</span>
               <span className=" lg:hidden block">
                 <svg
@@ -53,24 +61,24 @@ export default function CartItem({ item }) {
               <p className=" lg:text-sm text-[6px] font-medium text-[#1C1C1C]">
                 Remove
               </p>
-            </div>
+            </button>
           </div>
         </div>
       </td>
       <td>
-        <QuantityControl quantity={quantity} />
+        <QuantityControl quantity={quantity} item={item} />
       </td>
       <td>
         <div>
           <p className=" text-[10px] lg:text-[20px] font-medium text-[#1C1C1C]">
-            {amount}
+            ₦{formatNumber(amount)}
           </p>
         </div>
       </td>
       <td>
         <div>
           <p className="  text-[10px] lg:text-[20px] font-medium text-[#1C1C1C]">
-            {subTotal}
+            ₦{formatNumber(subtotal)}
           </p>
         </div>
       </td>

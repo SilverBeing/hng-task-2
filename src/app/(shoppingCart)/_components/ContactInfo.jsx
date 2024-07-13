@@ -1,28 +1,42 @@
 import InputField from "./InputField";
 
-export default function ContactInfo() {
+export default function ContactInfo({ contactInfo, handleChange }) {
+  const { firstName, lastName, phone, email } = contactInfo;
   const data = [
     {
       label: "last name",
       placeholder: "First name",
+      value: lastName,
+      name: "lastName",
+      type: "text",
 
       id: 1,
     },
     {
       label: "First Name",
       placeholder: "First name",
+      value: firstName,
+      name: "firstName",
+      type: "text",
 
       id: 2,
     },
     {
       label: "Phone Number",
       placeholder: "Phone Number",
+      value: phone,
+
+      name: "phone",
+      type: "number",
 
       id: 3,
     },
     {
       label: "Email Address",
       placeholder: "Email",
+      value: email,
+      name: "email",
+      type: "email",
 
       id: 4,
     },
@@ -38,6 +52,11 @@ export default function ContactInfo() {
             key={item.id}
             label={item.label}
             placeholder={item.placeholder}
+            value={item.value}
+            name={item.name}
+            handleChange={handleChange}
+            type={item.type}
+            required
           />
         ))}
       </div>

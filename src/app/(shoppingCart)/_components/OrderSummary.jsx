@@ -1,14 +1,15 @@
 "use client";
 import Button from "@/components/common/Button";
 import Modal from "@/components/common/Modal";
-import { cartItems } from "@/data";
+
+import { formatNumber } from "@/utils";
+import useCart from "@/utils/useCart";
 import Image from "next/image";
-import { useState } from "react";
 import PaymentComplete from "./PaymentComplete";
 import QuantityControl from "./QuantityControl";
 
-export default function OrderSummary() {
-  const [open, setOpen] = useState(false);
+export default function OrderSummary({ check, open, setOpen }) {
+  const { cartItems, total } = useCart();
   return (
     <>
       <div className="lg:p-10 p-7 flex-1  rounded-[17px] lg:rounded-[24px]  border-[0.5px] border-[#6C7275] bg-white">
@@ -18,18 +19,20 @@ export default function OrderSummary() {
           </h2>
         </div>
         <div className="">
-          <div>
+          <div className=" h-[308px] overflow-y-auto scroll-style">
             {cartItems.map((item) => (
               <div
                 key={item.id}
-                className={`  border-b border-solid border-[#EAEAEA] py-4 flex gap-2 items-center justify-between`}
+                className={`flex-wrap   border-b border-solid border-[#EAEAEA] py-4 flex gap-2 items-center justify-between`}
               >
                 <div className={`  flex gap-4 items-center`}>
                   <div className="px-[10px] w-[74px] lg:w-[100px]  py-[10px] bg-white shadow-book-card rounded-[11px]">
                     <Image
-                      src={item.image}
+                      src={`https://api.timbu.cloud/images/${item.image}`}
                       alt={item.title}
                       className="lg:w-[85px] w-[62px] mx-auto"
+                      width={233}
+                      height={238}
                     />
                   </div>
                   <div>
@@ -39,13 +42,13 @@ export default function OrderSummary() {
                     <p className=" mb-1 text-xs text-normal text-[#73768A]">
                       {item.author}
                     </p>
-                    <QuantityControl quantity={item.quantity} />
+                    <QuantityControl quantity={item.quantity} item={item} />
                   </div>
                 </div>
 
                 <div>
                   <p className=" text-xs lg:text-[20px] font-medium text-[#1C1C1C]">
-                    {item.subTotal}
+                    {formatNumber(item.subtotal)}
                   </p>
                 </div>
               </div>
@@ -53,9 +56,9 @@ export default function OrderSummary() {
           </div>
 
           <div className=" py-3 mt-4 border-b border-solid border-[#EAEAEA]  flex items-center justify-between">
-            <span className=" text-xs lg:text-sm text-[#6E7485]">Subtotal</span>
+            <span className=" text-xs lg:text-sm text-[#6E7485]">Quantity</span>
             <p className=" text-[#1C1C1C] text-xs lg:text-sm font-medium">
-              ₦17,000
+              ₦{formatNumber(total.productQuantity)}
             </p>
           </div>
           <div className=" py-3 border-b border-solid border-[#EAEAEA]  mt-4 flex items-center justify-between">
@@ -80,12 +83,13 @@ export default function OrderSummary() {
         <div className=" py-3  flex items-center justify-between">
           <span className=" text-sm lg:text-xl text-[#1C1C1C]">Total</span>
           <p className=" text-[#1C1C1C] text-base lg:text-xl font-medium">
-            ₦17,000
+            {formatNumber(total.totalPrice)}
           </p>
         </div>
         <div className="mt-10">
           <Button
-            onClick={() => setOpen(true)}
+            disabled={check}
+            type="submit"
             className=" h-[52px] w-full px-6 py-[10px]"
           >
             Complete Payment

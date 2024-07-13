@@ -1,10 +1,13 @@
 "use client";
 import { arrowRight } from "@/assets/icons";
+import { formatNumber } from "@/utils";
+import useCart from "@/utils/useCart";
 import Link from "next/link";
 import { useState } from "react";
 
 export default function CartSummary() {
   const [data, setData] = useState("Pick up");
+  const { total } = useCart();
   return (
     <div className="w-full mt-6 lg:mt-0 lg:w-[32.5%]  ">
       <div className="lg:p-10 p-8    rounded-[24px]  border-[0.5px] border-[#6C7275] bg-white">
@@ -49,10 +52,10 @@ export default function CartSummary() {
           <div className=" divide-y divide-[#EAEAEA] ">
             <div className=" py-3 flex items-center justify-between">
               <span className=" text-sm lg:text-base text-[#1C1C1C]">
-                Subtotal
+                Quantity
               </span>
               <p className=" text-[#1C1C1C]  text-sm lg:text-base font-medium">
-                ₦17,000
+                {total.productQuantity}
               </p>
             </div>
 
@@ -61,7 +64,7 @@ export default function CartSummary() {
                 Total
               </span>
               <p className=" text-[#1C1C1C] text-base lg:text-xl font-medium">
-                ₦17,000
+                ₦{formatNumber(total.totalPrice)}
               </p>
             </div>
           </div>

@@ -1,6 +1,11 @@
 "use client";
 import { fullHeart, heart, star } from "@/assets/icons";
+import { formatNumber } from "@/utils";
+import useCart from "@/utils/useCart";
+
+import Link from "next/link";
 import { useState } from "react";
+import { toast } from "sonner";
 import BookDetail from "./BookDetail";
 import BookImage from "./BookImage";
 import Button from "./Button";
@@ -9,35 +14,66 @@ import Modal from "./Modal";
 export default function BookCard({ book }) {
   const [openModal, setOpenModal] = useState(false);
   const [like, setLike] = useState(true);
-  const { image, title, author, amount, rating } = book;
+
+  const { name, description, id, categories, photos } = book;
+  const { addToCart, isItemAlreadyInCart } = useCart();
+  const updatedInfo = JSON?.parse(description || "{}") || {};
+  const itemAmount = Number(updatedInfo.amount);
+
+  const image = photos?.[0]?.url ?? "";
+  const itemToAdd = {
+    image,
+    title: name,
+    author: updatedInfo.author,
+    amount: itemAmount,
+    id: id,
+    quantity: 1,
+    subtotal: itemAmount,
+  };
+  const handleAddToCart = () => {
+    if (isItemAlreadyInCart(id)) {
+      addToCart(itemToAdd);
+      toast(`You’ve added more of ${name.toUpperCase()} to your cart. `);
+    } else {
+      addToCart(itemToAdd);
+      toast(`Great choice! 😁 ${name.toUpperCase()} is now in your cart.`);
+    }
+  };
   return (
     <>
-      <div className="lg:min-w-[233px]  min-w-[150px]">
-        <div className=" ">
-          <BookImage image={image} />
-        </div>
+      <div className="lg:min-w-[233px] w-full min-w-[150px]">
+        <Link className=" cursor-pointer" href={`/products/${id}`}>
+          <BookImage
+            title={name}
+            image={`https://api.timbu.cloud/images/${image}`}
+          />
+        </Link>
         <div>
           <div className=" flex mb-4 justify-between ">
             <div className=" mt-[19px]">
-              <h3 className=" truncate text-[#1C1C1C] text-[10px] lg:text-base font-medium mb-[4px]">
-                {title}
+              <h3 className=" w-full capitalize max-w-[233px] truncate block text-ellipsis  text-[#1C1C1C] text-[10px] lg:text-base font-medium mb-[4px]">
+                {name}
               </h3>
               <p className=" truncate text-[9px] lg:text-sm font-normal text-[#73768A]">
-                {author}
+                {updatedInfo.author}
               </p>
             </div>
+
             <div className="flex items-center gap-1">
               <span>{star}</span>
-              <p className=" text-[#73768A] text-[9px] lg:text-sm ">{rating}</p>
+              <p className=" text-[#73768A] text-[9px] lg:text-sm ">
+                {" "}
+                {updatedInfo.rating}
+              </p>
             </div>
           </div>
           <div>
             <p className=" text-[#1C1C1C] font-medium text-[15px] lg:text-[24px] mb-2">
-              {amount}
+              ₦{formatNumber(itemAmount)}
             </p>
             <div className=" flex items-center justify-between  gap-4">
               <Button
-                onClick={() => setOpenModal(true)}
+                onClick={handleAddToCart}
                 className="lg:text-base text-[10px] flex-1 h-10 px-0 py-0"
               >
                 Add to Cart
@@ -53,7 +89,7 @@ export default function BookCard({ book }) {
         </div>
       </div>
       <Modal isShowing={openModal} hide={() => setOpenModal(false)}>
-        <BookDetail book={book} />
+        <BookDetail id={id} />
       </Modal>
     </>
   );

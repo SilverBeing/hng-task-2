@@ -23,6 +23,8 @@ import rr from "./rr.png";
 import complete from "./slang-to-the-moon.png";
 import stars from "./stars.png";
 import ux from "./ux.png";
+import loader from "./loader.gif";
+import empty from "./empty.svg";
 export {
   achebe,
   adichie,
@@ -34,9 +36,11 @@ export {
   demon,
   echo,
   fallCamus,
+  loader,
   finish,
   fiveAm,
   gaiman,
+  empty,
   geography,
   harry,
   heroImage1,
