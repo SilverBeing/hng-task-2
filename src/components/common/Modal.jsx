@@ -7,7 +7,7 @@ import { createPortal } from "react-dom";
 export default function Modal({ isShowing, children, hide }) {
   // const [domLoaded, setDomLoaded] = useState(false);
   const router = useRouter();
-  const goBack = () => router.push("/products");
+  const goBack = () => router.back;
 
   useEffect(() => {
     // setDomLoaded(true);
