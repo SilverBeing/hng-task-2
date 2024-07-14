@@ -3,6 +3,8 @@ import Categories from "@/components/common/Categories";
 import MostSearch from "@/components/MostSearch";
 import { PaginationI } from "@/components/Pagination";
 import { fetchAllCategories, fetchAllProducts } from "@/lib";
+import { Suspense } from "react";
+import Loading from "../loading";
 
 export default async function Home({ searchParams }) {
   const { total, products } = await fetchAllProducts(
@@ -17,13 +19,15 @@ export default async function Home({ searchParams }) {
 
   return (
     <>
-      <div id="products" className="mt-[-100px]">
-        <Categories data={categories} />
-        <BookCollection title="Best Seller" data={products} />
+      <Suspense fallback={<Loading />}>
+        <div id="products" className="mt-[-100px]">
+          <Categories data={categories} />
+          <BookCollection title="Best Seller" data={products} />
 
-        <PaginationI total={total} />
-        <MostSearch data={mostSearched} />
-      </div>
+          <PaginationI total={total} />
+          <MostSearch data={mostSearched} />
+        </div>
+      </Suspense>
     </>
   );
 }

@@ -21,7 +21,7 @@ export default function Categories({ data }) {
       }}
       className=" max-w-[350px] mx-auto mb-9 lg:mb-[62px]"
     >
-      <SelectTrigger className="max-w-[350px] mx-auto capitalize mb-10 lg:mb-[60px] mt-[86px] py-4 px-6 rounded-[12px] ">
+      <SelectTrigger className="max-w-[350px] mx-auto capitalize mb-[50px] lg:mb-[60px] mt-[86px] py-4 px-6 rounded-[12px] ">
         <SelectValue
           className="capitalize lg:text-[31px]"
           placeholder="Select"

@@ -33,7 +33,7 @@ export default function AddToCart({ itemToAdd }) {
   return (
     <Button
       onClick={handleAddToCart}
-      className=" h-[52px] w-full px-6 py-[10px]"
+      className="lg:text-base text-[10px] w-full h-10 px-0 py-0"
     >
       Add to Cart
     </Button>

@@ -25,7 +25,7 @@ export const fetchAllCategories = async () => {
     const res = await fetch(
       `${BASE_URL}/categories?organization_id=${ORGANIZATION_ID}&reverse_sort=false&size=10&Appid=${APPID}&Apikey=${APIKEY}`,
       {
-        next: { revalidate: 1000 },
+        cache: "no-store",
       }
     );
 
