@@ -7,9 +7,9 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner";
+import AddToCart from "./AddToCart";
 import BookDetail from "./BookDetail";
 import BookImage from "./BookImage";
-import Button from "./Button";
 import Modal from "./Modal";
 
 export default function BookCard({ book }) {
@@ -87,12 +87,7 @@ export default function BookCard({ book }) {
               ₦{formatNumber(itemAmount)}
             </p>
             <div className=" flex items-center justify-between  gap-4">
-              <Button
-                onClick={handleAddToCart}
-                className="lg:text-base text-[10px] flex-1 h-10 px-0 py-0"
-              >
-                Add to Cart
-              </Button>
+              <AddToCart itemToAdd={itemToAdd} />
               <button
                 onClick={() => setLike(!like)}
                 className=" py-[6px] lg:py-2 px-2 lg:px-3 rounded-[8px] bg-[#FFEEE8]"

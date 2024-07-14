@@ -1,12 +1,23 @@
 import { bigStars } from "@/assets";
 import Image from "next/image";
+import AddToCart from "./AddToCart";
 import BookImage from "./BookImage";
 import Gallery from "./Gallery";
 
 export default async function BookDetail({ product }) {
-  const { photos, name, description } = product;
+  const { photos, name, description, id } = product;
   const updatedInfo = JSON?.parse(description || "{}") || {};
+  const itemAmount = Number(updatedInfo.amount);
   const image = photos?.[0]?.url ?? "";
+  const itemToAdd = {
+    image,
+    title: name,
+    author: updatedInfo.author,
+    amount: itemAmount,
+    id: id,
+    quantity: 1,
+    subtotal: itemAmount,
+  };
 
   return (
     <div className="lg:max-w-[767px]  max-w-[350px] w-full">
@@ -38,6 +49,9 @@ export default async function BookDetail({ product }) {
           <p className=" text-base lg:text-xl text-[#1C1C1C]">
             1 X {updatedInfo.amount}
           </p>
+          <div className="w-full mt-2">
+            <AddToCart itemToAdd={itemToAdd} />
+          </div>
         </div>
       </div>
       <div className=" ">
