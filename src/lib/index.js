@@ -5,7 +5,7 @@ export const fetchAllProducts = async (page, category = "") => {
     const res = await fetch(
       `${BASE_URL}/products?organization_id=${ORGANIZATION_ID}&reverse_sort=false&page=${page}&size=10&Appid=${APPID}&Apikey=${APIKEY}&category_id=${category}`,
       {
-        next: { revalidate: 40000 },
+        next: { revalidate: 1000 },
       }
     );
 
@@ -25,7 +25,7 @@ export const fetchAllCategories = async () => {
     const res = await fetch(
       `${BASE_URL}/categories?organization_id=${ORGANIZATION_ID}&reverse_sort=false&size=10&Appid=${APPID}&Apikey=${APIKEY}`,
       {
-        next: { revalidate: 40000 },
+        next: { revalidate: 1000 },
       }
     );
 
@@ -43,7 +43,7 @@ export const fetchProductById = async (id) => {
     const res = await fetch(
       `${BASE_URL}/products/${id}?organization_id=${ORGANIZATION_ID}&reverse_sort=false&Appid=${APPID}&Apikey=${APIKEY}`,
       {
-        next: { revalidate: 40000 },
+        next: { revalidate: 1000 },
       }
     );
 

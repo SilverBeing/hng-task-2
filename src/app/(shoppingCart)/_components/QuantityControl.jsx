@@ -8,6 +8,7 @@ export default function QuantityControl({ quantity, item }) {
     <>
       <div className="max-w-[54px] hidden lg:max-w-[96px] lg:flex items-center   bg-white ">
         <button
+          type="button"
           onClick={() => decreaseItemQuantity(item)}
           className=" w-[33px] rounded-tl-[8px] rounded-bl-[8px]   border border-[#73768A]  h-[33px] grid place-items-center [&>svg]"
         >
@@ -17,6 +18,7 @@ export default function QuantityControl({ quantity, item }) {
           {quantity}
         </span>
         <button
+          type="button"
           onClick={() => increaseItemQuantity(item)}
           className=" w-[33px]   border border-[#73768A]  h-[33px] grid place-items-center rounded-tr-[8px] rounded-br-[8px] "
         >
@@ -25,6 +27,7 @@ export default function QuantityControl({ quantity, item }) {
       </div>
       <div className="max-w-[54px] lg:hidden  lg:max-w-[96px] flex items-center   bg-white ">
         <button
+          type="button"
           onClick={() => decreaseItemQuantity(item)}
           className=" w-[19px] rounded-tl-[4px] rounded-bl-[4px]   border border-[#73768A]  h-[19px] grid place-items-center [&>svg]"
         >
@@ -48,6 +51,7 @@ export default function QuantityControl({ quantity, item }) {
           {quantity}
         </span>
         <button
+          type="button"
           onClick={() => increaseItemQuantity(item)}
           className=" w-[19px]   border border-[#73768A]  h-[19px] grid place-items-center rounded-tr-[4px] rounded-br-[4px] "
         >
