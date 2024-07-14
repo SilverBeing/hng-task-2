@@ -37,7 +37,7 @@ export default function OrderSummary({ check, open, setOpen }) {
                       />
                     </div>
                     <div>
-                      <h2 className=" text-[#1C1C1C] mb-1 lg:text-sm text-xs font-medium">
+                      <h2 className=" truncate max-w-[120px] text-[#1C1C1C] mb-1 lg:text-sm text-xs font-medium">
                         {item.title}
                       </h2>
                       <p className=" mb-1 text-xs text-normal text-[#73768A]">
