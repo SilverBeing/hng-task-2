@@ -10,18 +10,19 @@ import {
 
 export default function Categories({ data }) {
   const router = useRouter();
+  const handleValueChange = (value) => {
+    if (value === "All Products") {
+      return router.push(`/products`);
+    }
+    router.push(`/products?category=${value}`);
+  };
   return (
     <Select
       defaultValue="All Products"
-      onValueChange={(value) => {
-        if (value === "All Products") {
-          return router.push(`/products`);
-        }
-        router.push(`/products?category=${value}`);
-      }}
+      onValueChange={handleValueChange}
       className=" max-w-[350px] mx-auto mb-9 lg:mb-[62px]"
     >
-      <SelectTrigger className="max-w-[350px] mx-auto capitalize mb-[50px] lg:mb-[60px] mt-[86px] py-4 px-6 rounded-[12px] ">
+      <SelectTrigger className="max-w-[350px] mx-auto  capitalize mb-[50px] lg:mb-[60px] mt-[86px] py-4 px-6 rounded-[12px] ">
         <SelectValue
           className="capitalize lg:text-[31px]"
           placeholder="Select"

@@ -1,27 +1,19 @@
 "use client";
 import { fullHeart, heart, star } from "@/assets/icons";
 import { formatNumber } from "@/utils";
-import useCart from "@/utils/useCart";
 
-import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { toast } from "sonner";
 import AddToCart from "./AddToCart";
-import BookDetail from "./BookDetail";
 import BookImage from "./BookImage";
-import Modal from "./Modal";
 
 export default function BookCard({ book }) {
-  const [openModal, setOpenModal] = useState(false);
   const [like, setLike] = useState(true);
-
-  const { name, description, id, categories, photos } = book;
-  const { addToCart, isItemAlreadyInCart } = useCart();
+  const { name, description, id, photos } = book;
   const updatedInfo = JSON?.parse(description || "{}") || {};
   const itemAmount = Number(updatedInfo.amount);
   const router = useRouter();
-  const pathname = usePathname();
+
   const image = photos?.[0]?.url ?? "";
   const itemToAdd = {
     image,
@@ -32,37 +24,19 @@ export default function BookCard({ book }) {
     quantity: 1,
     subtotal: itemAmount,
   };
-  const handleAddToCart = () => {
-    if (isItemAlreadyInCart(id)) {
-      addToCart(itemToAdd);
-      toast(`Yeaa💃`, {
-        description: `You’ve added more of ${name.toUpperCase()} to your cart.`,
-        action: {
-          label: pathname === "/cart" ? "Close" : "View Cart",
-          onClick: () => router.push("/cart"),
-        },
-      });
-    } else {
-      addToCart(itemToAdd);
 
-      toast(`Great choice! 😁`, {
-        description: `${name.toUpperCase()} is now in your cart.`,
-        action: {
-          label: pathname === "/cart" ? "Close" : "View Cart",
-          onClick: () => router.push("/cart"),
-        },
-      });
-    }
-  };
   return (
     <>
       <div className="lg:min-w-[233px] w-full min-w-[150px]">
-        <Link className=" cursor-pointer" href={`/products/${id}`}>
+        <button
+          onClick={() => router.push(`/products/${id}`)}
+          className=" cursor-pointer"
+        >
           <BookImage
             title={name}
             image={`https://api.timbu.cloud/images/${image}`}
           />
-        </Link>
+        </button>
         <div>
           <div className=" flex mb-4 justify-between ">
             <div className=" mt-[19px]">
@@ -98,9 +72,6 @@ export default function BookCard({ book }) {
           </div>
         </div>
       </div>
-      <Modal isShowing={openModal} hide={() => setOpenModal(false)}>
-        <BookDetail id={id} />
-      </Modal>
     </>
   );
 }
