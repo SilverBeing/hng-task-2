@@ -2,6 +2,7 @@
 import { fullHeart, heart, star } from "@/assets/icons";
 import { formatNumber } from "@/utils";
 
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import AddToCart from "./AddToCart";
@@ -28,15 +29,12 @@ export default function BookCard({ book }) {
   return (
     <>
       <div className="lg:min-w-[233px] w-full min-w-[150px]">
-        <button
-          onClick={() => router.push(`/products/${id}`)}
-          className=" cursor-pointer"
-        >
+        <Link href={`/products/${id}`} className=" cursor-pointer">
           <BookImage
             title={name}
             image={`https://api.timbu.cloud/images/${image}`}
           />
-        </button>
+        </Link>
         <div>
           <div className=" flex mb-4 justify-between ">
             <div className=" mt-[19px]">
